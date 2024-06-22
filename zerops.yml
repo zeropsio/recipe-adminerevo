@@ -1,0 +1,16 @@
+zerops:
+  - setup: adminerevo
+    build:
+      base: php@8.3
+      buildCommands:
+        - |
+          apk add wget unzip
+          wget https://download.adminerevo.org/latest/adminer/adminer.zip
+          unzip adminer.zip
+          mv adminer.php index.php
+      deployFiles: index.php
+    run:
+      base: php-apache@8.3
+      ports:
+        - port: 80
+          httpSupport: true
