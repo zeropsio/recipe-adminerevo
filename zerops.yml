@@ -2,9 +2,10 @@ zerops:
   - setup: adminerevo
     build:
       base: php@8.3
+      prepareCommands:
+        - sudo apk add wget unzip
       buildCommands:
         - |
-          apk add wget unzip
           wget https://download.adminerevo.org/latest/adminer/adminer.zip
           unzip adminer.zip
           mv adminer.php index.php
